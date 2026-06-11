@@ -1,0 +1,57 @@
+<template>
+  <div class="app-container">
+    <!--表单-->
+    <el-form :inline="true" class="demo-form-inline">
+
+      <el-form-item label="日期">
+        <el-date-picker
+          v-model="day"
+          type="date"
+          placeholder="选择要统计的日期"
+          value-format="yyyy-MM-dd" />
+      </el-form-item>
+
+      <el-button
+        :disabled="btnDisabled"
+        type="primary"
+        @click="create()">生成</el-button>
+    </el-form>
+            <br>
+        <span style="display:inline-block;width:600px;font-weight:bold;">
+            统计前一日系统的登录人数、注册人数、视频播放次数、课程统计数
+        </span>
+
+  </div>
+</template>
+
+<script>
+import sta from '@/api/sta'
+
+export default{
+    data(){
+        return{
+            day:'',
+            btnDisabled:false
+        }
+    },
+
+    created(){
+
+    },
+    
+    methods:{
+        create(){
+            sta.createStaData(this.day)
+                .then(response =>{
+                    //提示信息
+                     this.$message({
+                        type: 'success',
+                        message: '生成数据成功!'
+                    })
+                    //跳转路径
+                    this.$router.push({path:'/sta/show'})
+                })
+        }
+    }
+}
+</script>
