@@ -4,8 +4,6 @@
 
 **Live demo:** http://panjiachen.github.io/vue-admin-template
 
-[中文文档](https://github.com/PanJiaChen/vue-admin-template/blob/master/README-zh.md)
-
 ## Build Setup
 
 ```bash
